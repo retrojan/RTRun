@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор параметров</title>
+    <style>
+body {
+    background-color: rgb(20, 20, 20);
+    user-select: none;
+    overflow: hidden;
+}
+
+button {
+    background-color: rgb(27, 27, 27);  /* Цвет фона кнопки */
+    color: white;  /* Цвет текста */
+    border: none;  /* Убираем рамку */
+    padding: 10px 20px;  /* Отступы вокруг текста */
+    font-size: 16px;  /* Размер шрифта */
+    cursor: pointer;  /* Курсор при наведении */
+    border-radius: 5px;  /* Сглаженные углы */
+    transition: background-color 0.3s;  /* Плавный переход при наведении */
+}
+
+button:hover {
+    background-color: rgb(50, 50, 50);  /* Цвет фона при наведении */
+}
+html::-webkit-scrollbar {
+    width:0 !important;
+}
+
+#scrollbar {
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    width:20px;
+    background-color:#272b2f;
+    z-index:2;
+}
+
+#scrollthumb {
+    position:absolute;
+    top:0;
+    right:0;
+    width:20px;
+    background:#e94525;
+}
+
+#scrollthumb:before {
+    position:absolute;
+    top:0;
+    left:0;
+    width:20px;
+    height:20px;
+    background-image:url("../assets/arrows.png");
+    background-repeat:no-repeat;
+    background-position:0 0;
+    content:"";
+    display:block;
+}
+
+#scrollthumb:after {
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:20px;
+    height:20px;
+    background-image:url("../assets/arrows.png");
+    background-repeat:no-repeat;
+    background-position:0 -20px;
+    content:"";
+    display:block;
+}
+h1 {
+    color: white;
+    font-family: 'Roboto', sans-serif; /* Шрифт Roboto */
+    font-size: 40px; /* Размер шрифта */
+    font-weight: 10; /* Жирное начертание */
+    color: white; /* Цвет текста прозрачный для градиента */
+    background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Градиентный фон */
+    -webkit-background-clip: text; /* Применяем градиент к тексту */
+    background-clip: text; /* Применяем градиент к тексту */
+    text-align: center; /* Выравнивание по центру */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Тень */
+}
+.section::-webkit-scrollbar {
+    width: 10px;
+}
+.section::-webkit-scrollbar-track {
+    background-color: darkgrey;
+}
+.section::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+    </style>
+    <script>
+        function sendParameter(param) {
+            window.external.SendToApp(param); // Отправляем параметр в WinForms
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Graphics</h1>
+    <button onclick="sendParameter('-fullscreen')">-fullscreen</button>
+    <button onclick="sendParameter('-windowed')">-windowed</button>
+    <button onclick="sendParameter('-vsync')">-vsync</button>
+    <button onclick="sendParameter('-antialiasing')">-antialiasing</button>
+    <button onclick="sendParameter('-hdr')">-hdr</button>
+    <button onclick="sendParameter('-resolution 1920x1080')">-resolution 1920x1080</button>
+    <button onclick="sendParameter('-resolution 1280x720')">-resolution 1280x720</button>
+    <button onclick="sendParameter('-textures high')">-textures high</button>
+    <button onclick="sendParameter('-shadows ultra')">-shadows ultra</button>
+
+    <h1>Debugging</h1>
+    <button onclick="sendParameter('-debug')">-debug</button>
+    <button onclick="sendParameter('-console')">-console</button>
+    <button onclick="sendParameter('-log')">-log</button>
+    <button onclick="sendParameter('-verbose')">-verbose</button>
+    <button onclick="sendParameter('-profiling')">-profiling</button>
+    <button onclick="sendParameter('-devmode')">-devmode</button>
+    <button onclick="sendParameter('-benchmark')">-benchmark</button>
+
+    <h1>Performance</h1>
+    <button onclick="sendParameter('-highperf')">-highperf</button>
+    <button onclick="sendParameter('-lowpower')">-lowpower</button>
+    <button onclick="sendParameter('-balanced')">-balanced</button>
+    <button onclick="sendParameter('-fpslimit')">-fpslimit</button>
+    <button onclick="sendParameter('-threading')">-threading</button>
+    <button onclick="sendParameter('-nocache')">-nocache</button>
+    <button onclick="sendParameter('-priority high')">-priority high</button>
+
+    <h1>Audio</h1>
+    <button onclick="sendParameter('-mute')">-mute</button>
+    <button onclick="sendParameter('-volume 50')">-volume 50</button>
+    <button onclick="sendParameter('-surround')">-surround</button>
+    <button onclick="sendParameter('-stereo')">-stereo</button>
+    <button onclick="sendParameter('-mono')">-mono</button>
+    <button onclick="sendParameter('-bitrate 320')">-bitrate 320</button>
+    <button onclick="sendParameter('-latency low')">-latency low</button>
+
+    <h1>Networking</h1>
+    <button onclick="sendParameter('-offline')">-offline</button>
+    <button onclick="sendParameter('-lan')">-lan</button>
+    <button onclick="sendParameter('-pinglimit 100')">-pinglimit 100</button>
+    <button onclick="sendParameter('-port 27015')">-port 27015</button>
+    <button onclick="sendParameter('-proxy')">-proxy</button>
+    <button onclick="sendParameter('-maxconnections 10')">-maxconnections 10</button>
+    <button onclick="sendParameter('-ipv6')">-ipv6</button>
+</body>
+</html>
